@@ -681,6 +681,11 @@ nav {
 .dish-info h4 {
   font-family: 'Playfair Display', serif;
   font-size: 15px; font-weight: 600; color: var(--white); margin-bottom: 0.25rem;
+  display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+}
+.dish-price {
+  font-family: 'Cinzel', serif; font-size: 12px; font-weight: 600;
+  color: var(--gold); white-space: nowrap;
 }
 .dish-info p { font-size: 12px; color: var(--muted); line-height: 1.6; }
 .children-description { margin-top: 1.5rem; margin-bottom: 0; }
@@ -1667,21 +1672,21 @@ footer {
         <li>
           <div class="dish-bullet"></div>
           <div class="dish-info">
-            <h4>Butter Chicken</h4>
+            <h4>Butter Chicken<span class="dish-price">10.00€</span></h4>
             <p>Tandoorimarinoitua kanaa cashewpähkinöillä tomaatti-voikermakastikkeessa.</p>
           </div>
         </li>
         <li>
           <div class="dish-bullet"></div>
           <div class="dish-info">
-            <h4>Kana Korma</h4>
+            <h4>Kana Korma<span class="dish-price">10.00€</span></h4>
             <p>Kananrintapaloja erittäin miedossa tomaattikermakastikkeessa.</p>
           </div>
         </li>
         <li>
           <div class="dish-bullet"></div>
           <div class="dish-info">
-            <h4>Palak Paneer</h4>
+            <h4>Palak Paneer<span class="dish-price">10.00€</span></h4>
             <p>Tuorejuustopaloja valkosipuli-pinaattikermakastikkeessa.</p>
           </div>
         </li>
