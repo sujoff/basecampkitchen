@@ -2142,6 +2142,54 @@ function setLanguage(lang) {
   if (select) select.value = lang;
 }
 
+function showComingSoon() {
+  const lang = document.documentElement.lang === 'en' ? 'en' : 'fi';
+  const toast = document.getElementById('booking-toast') || document.createElement('div');
+
+  if (!toast.id) {
+    toast.id = 'booking-toast';
+    toast.style.position = 'fixed';
+    toast.style.left = '50%';
+    toast.style.bottom = '28px';
+    toast.style.transform = 'translateX(-50%) translateY(12px)';
+    toast.style.opacity = '0';
+    toast.style.pointerEvents = 'none';
+    toast.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+    toast.style.background = 'rgba(10,22,40,0.96)';
+    toast.style.color = '#f6f1e6';
+    toast.style.border = '1px solid rgba(201,168,76,0.5)';
+    toast.style.borderRadius = '999px';
+    toast.style.padding = '10px 18px';
+    toast.style.fontSize = '13px';
+    toast.style.fontWeight = '600';
+    toast.style.letterSpacing = '0.08em';
+    toast.style.textTransform = 'uppercase';
+    toast.style.boxShadow = '0 18px 44px rgba(0,0,0,0.28)';
+    document.body.appendChild(toast);
+  }
+
+  toast.textContent = lang === 'en' ? 'Coming soon' : 'Tulossa pian';
+  toast.style.opacity = '1';
+  toast.style.transform = 'translateX(-50%) translateY(0)';
+
+  clearTimeout(showComingSoon.timeoutId);
+  showComingSoon.timeoutId = setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateX(-50%) translateY(12px)';
+  }, 1800);
+}
+
+document.addEventListener('click', (event) => {
+  const link = event.target.closest('a');
+  if (!link) return;
+
+  const label = (link.textContent || '').trim();
+  if ((label === 'Varaa pöytä' || label === 'Book a table') && link.getAttribute('href') !== '#menu') {
+    event.preventDefault();
+    showComingSoon();
+  }
+});
+
 (function initLanguage() {
   const saved = localStorage.getItem('basecamp-language');
   if (saved === 'en') setLanguage('en');
